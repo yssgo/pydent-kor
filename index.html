@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>파이썬 코드 들여쓰기 자동 정렬</title>
+    <link href="./styles/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div>
+        <h1>파이썬 코드 들여쓰기 자동 정렬</h1>
+    </div>
+    <div>
+        <p><a href="https://pydent--usgnosny.repl.co/">English</a></p>
+    </div>
+    <div id="#wrap">
+    <div class="flow">
+      <p>여기에 코드 붙여넣기 </p>
+      <p>
+      <textarea id="code" rows="20">if a==3:
+'''
+abcde
+'''
+c='''
+kbc
+'''
+f='''xxxx
+'''
+b=4
+else:
+  k=1
+ while k &lt; 5:
+  k -= 1
+  #END
+  c=5
+  #END if
+  print(a)
+match a,:
+case 'b',:
+dddddddd
+case 'c',:
+dddddd
+case _:
+dddddd
+#end match
+      </textarea>
+      </p>
+    </div>
+    <div class="flow">
+      <p>들여 쓰기된 코드</p>
+      <p>
+      <textarea id="indented" rows=20></textarea>
+      </p>
+    </div>
+    <div>
+      <p>경고 : 문자열 안에 있는지 여부에 관계없이, 첫 번째 파운드 문자 (#)는 주석의 시작으로 처리됩니다.</p>
+    </div>
+    <div><button id="btnIndent" onclick="indentIt()">들여 쓰기</button></div>
+    </div>
+    
+    <div id="desc_wrap">
+      <pre id="desc"></pre>
+    </div>
+
+    <div id="files">
+      <p><a href="./data/pydent(ko).py">pydent(ko).py</a>
+        <a href="./data/pydent(ko).py" download>download</a></p>
+      <p><a href="./data/pydent(en).py">pydent(en).py</a>
+        <a href="./data/pydent(en).py" download>download</a></p>
+
+      <p> Notepad++ PythonScript 용 스크립트 
+      <p> PythonScript 플러그인은 [플러그인/플러그인 관리...] 에서 PythonScript 찾아서 설치</P>
+      <hr />
+      <p><a href="./data/indent_py_ko.py" class="download"> indent_py_ko.py</a> <a href="./data/indent_py_ko.py" download>download</a></p>
+      <p><a href="./data/indent_py_en.py" class="download"> indent_py_en.py</a> <a href="./data/indent_py_en.py" download>download</a></p>
+    <p>단독 PYthon 스크립트</p>
+      <p>명령 줄: </p>
+      <p><code>py -3 indnet_py_ko.py 원본.py 대상.py</code></p>
+      <p>파이썬 파일에서 import 하기 </p>
+    <pre>from indent_py_ko import indent_pycode
+code=r"""
+a=3
+if a==3:
+'''
+abcde
+'''
+c='''
+xyz
+opq
+'''
+b=4
+else:
+  k=1
+ while k &lt; 5:
+   k-=1
+     #END
+c=5
+#END if
+print(a)
+"""
+print(indent_pycode(code))
+    </pre>
+    <hr />
+    <p> 참고: </p>
+      <p><a href="https://github.com/bruderstein/PythonScript/releases">Notepad++ PythonScript for Python 3</a></p>
+      <p>Pyhon 3 용 PythonScript 3는 개발 단계. 기존 Python 2용 PythonScript 3와 같이 사용 불가능.</p>
+    <p>UTF-8 인코딩을 사용한 문서만 지원</p>
+      <p> <del>64비트 시스템에서 32비트용인 Python 3용 PythonScript 3 사용 불가능.</del></p>
+      <p><del>(Python 3.9부터 32비트 시스템 지원하지 않음)</del></p>
+      <p><ins>현재 Python 3.9 이상 버전도 32비트 시스템 지원함</ins></p>
+    </div>
+
+    <script src="./scripts/indent_pycode_all_in_one.js">
+    </script>
+
+    <script defer src="./scripts/script_ko.js">
+    </script>
+  </body>
+</html>
