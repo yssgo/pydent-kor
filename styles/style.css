@@ -29,6 +29,9 @@ body {font-family:D2Coding, NanumGothicCoding, "Noto Sans Mono", "Bon Mono", mon
       display: inline-block;
       border-style: inset;
     }
+   .strike {
+      text-decoration:line-through;
+   }
     a[download]{
         color: black;
         background-color: beige;
