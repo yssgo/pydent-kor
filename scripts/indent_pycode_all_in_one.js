@@ -30,7 +30,7 @@ class PydentConfig {
         this.auto_unindent = true;
         this.indent_comment = true;
     }
-};
+}
 
 g_config = new PydentConfig();
 g_var = new PydentVariables();
@@ -74,7 +74,7 @@ Please insert the following special comments in the code:
     don't indent comment lines
 #INDENT-COMMENT ON
 #INDENT-COMMENT-ON
-    indent comment lines (default)\n`
+    indent comment lines (default)\n`;
 
 g_description_ko = `파이썬 코드의 들여 쓰기를 고치는 프로그램.
 콜론으로 끝나는 명령문 이후에, 들여 쓰기 수준이
@@ -127,7 +127,7 @@ function enableTab(id){
             let e=obj.selectionEnd;
             ev.preventDefault();
             if(ev.shiftKey){
-                let s4s = v.substring(s-4,s)
+                let s4s = v.substring(s-4,s);
                 if(s4s.match(/^( {1,4})$/m) !== null){
                     let splen = (s4s.match(/^( {1,4})$/m))[1].length;
                     obj.value=v.substring(0,s-splen)+v.substring(e);
@@ -159,7 +159,7 @@ function check_if_auto_words(st){
 			'case (', 'case(', 'case ' // Python 3.10 match case
         ];
         for(let i=0; i < else_like.length; i++){
-            let x = else_like[i]
+            let x = else_like[i];
             if (st.startsWith(x)) {
                 return true;
             } //end if
@@ -180,7 +180,7 @@ function check_if_two_level_word_beginning(st){
 }
 
 function check_if_end_of_two_level_word(wrd){
-    let two_level_words = ['match']
+    let two_level_words = ['match'];
     for(let i=0; i < two_level_words.length; i++){
         let x = two_level_words[i];
         if (wrd == x){
@@ -213,7 +213,7 @@ function handle_end(){
                 g_var.stripped = g_var.stripped.substring(0, commentpos);
             } //end if
         } //endif
-        stx = "# END" + g_var.stripped.substring("# END".length);
+        let stx = "# END" + g_var.stripped.substring("# END".length);
         wa = stx.split(' ');
     } //end if
 
@@ -365,7 +365,7 @@ function indent_pycode(code){
             }
             g_config.indent = " ".repeat(g_config.tabsize);
             print(g_var.text_.trimRight());
-            continue
+            continue;
         }
 
 
