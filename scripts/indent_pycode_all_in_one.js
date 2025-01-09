@@ -408,9 +408,9 @@ function indent_pycode(code){
         } else if(g_var.stripped.toUpperCase() == '#BEGIN'
             || g_var.stripped.toUpperCase() == '# BEGIN'
         ){
-            leve -= 1;
+            g_var.lev -= 1;
             print(g_config.indent.repeat(g_var.lev) + g_var.text_.trim());
-            leve += 1;
+            g_var.lev += 1;
         } else if (g_var.stripped.startsWith("#")) {
             if(g_config.indent_comment){
                 print(g_config.indent.repeat(g_var.lev)+g_var.text_.trim());
