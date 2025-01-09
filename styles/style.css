@@ -1,4 +1,12 @@
-    body {font-family:D2Coding, NanumGothicCoding, "Noto Sans Mono", "Bon Mono", monospace}
+@font-face {
+  font-family: D2Coding;
+  src:
+    local('D2Coding') format('truetype'),
+    url('./D2Coding-Ver1.3.2-20180524.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+body {font-family:D2Coding, NanumGothicCoding, "Noto Sans Mono", "Bon Mono", monospace}
     
     #wrap {height:40%;width:100%}
     
@@ -32,5 +40,5 @@
         text-decoration: none;
     }
     textarea {
-        font-family: 나눔고딕코딩, NanumGothicCoding, D2Coding, "Fira Code", "Noto Sans Mono", "Bon Mono", monospace;
+        font-family: D2Coding, 나눔고딕코딩, NanumGothicCoding, "Fira Code", "Noto Sans Mono", "Bon Mono", monospace;
     }
