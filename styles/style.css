@@ -60,5 +60,6 @@ a[download]{
   text-decoration: none;
 }
 textarea {
+  display: block;
   font-family: D2Coding, 나눔고딕코딩, NanumGothicCoding, "Fira Code", "Noto Sans Mono", "Bon Mono", monospace;
 }
