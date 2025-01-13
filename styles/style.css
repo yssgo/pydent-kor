@@ -13,10 +13,12 @@ body {
     
 #wrap {
   width:100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  justify-content: space-around;
+  display: block;
+}
+#wrap: after {
+  content: "";
+  clear: both;
+  display: block;
 }
     
 #desc_wrap {height:20vh;width:80%;overflow:scroll;border-style:inset;margin-top: 1em;}
