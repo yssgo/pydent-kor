@@ -6,42 +6,58 @@
   font-weight: normal;
   font-style: normal;
 }
-body {font-family:D2Coding, NanumGothicCoding, "Noto Sans Mono", "Bon Mono", monospace}
+body {
+  font-family:D2Coding, NanumGothicCoding, "Noto Sans Mono", "Bon Mono", monospace;
+  width:100%;
+}
     
-    #wrap {height:40%;width:100%}
+#wrap {
+  width:100%;
+  display: block;
+}
+#wrap: after {
+  content: "";
+  clear: both;
+  display: block;
+}
     
-    #desc_wrap {height:20vh;width:80%;overflow:scroll;border-style:inset;margin-top: 1em;}
+#desc_wrap {height:20vh;width:80%;overflow:scroll;border-style:inset;margin-top: 1em;}
     
-    .flow {display:inline-block;width: 40%; height:100%;}
-    #code,#indented {width: 100%; height:100%;overflow:scroll}
-    #indented {background-color:lightgray;}
+.flow {
+  display:block;
+  float: left;
+}
+
+#code,#indented {width: 100%; height:100%;overflow:scroll}
+
+#indented {background-color:lightgray;}
     
-    button {padding: 20px;}
-    #files{
-      margin-top: 1em;
-    }
-    #files pre {
-      border-style: inset;
-      overflow: scroll;
-      height: 20vh;
-    }
-    #files code {
-      display: inline-block;
-      border-style: inset;
-    }
-   .strike {
-      text-decoration:line-through;
-   }
-    a[download]{
-        color: black;
-        background-color: beige;
-        border-color: gray;
-        padding:0.2rem;
-        display: inline-block;
-        border-style: outset;
-        border-width: 0.2rem;
-        text-decoration: none;
-    }
-    textarea {
-        font-family: D2Coding, 나눔고딕코딩, NanumGothicCoding, "Fira Code", "Noto Sans Mono", "Bon Mono", monospace;
-    }
+button {padding: 20px;}
+#files{
+  margin-top: 1em;
+}
+#files pre {
+  border-style: inset;
+  overflow: scroll;
+  height: 20vh;
+}
+#files code {
+  display: inline-block;
+  border-style: inset;
+}
+.strike {
+  text-decoration:line-through;
+}
+a[download]{
+  color: black;
+  background-color: beige;
+  border-color: gray;
+  padding:0.2rem;
+  display: inline-block;
+  border-style: outset;
+  border-width: 0.2rem;
+  text-decoration: none;
+}
+textarea {
+  font-family: D2Coding, 나눔고딕코딩, NanumGothicCoding, "Fira Code", "Noto Sans Mono", "Bon Mono", monospace;
+}
