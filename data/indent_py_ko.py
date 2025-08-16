@@ -41,6 +41,7 @@ class PydentConfig (object):
         self.indent = ' '* self.tabsize
         self.auto_unindent = True
         self.indent_comment = True
+        self.dedent_end_tag = True
     #end def
 #end class
 
@@ -89,6 +90,12 @@ g_description = textwrap.dedent('''
     - #INDENT-COMMENT ON
     - #INDENT-COMMENT-ON
     -     주석 줄을 들여 씀 (기본값임)
+    - #DEDENT-END-TAG ON
+    - #DEDENT-END-TAG-ON
+    -     #END 태그 줄 내어쓰기 (기본값임)
+    - #DEDENT-END-TAG OFF
+    - #DEDENT-END-TAG-OFF
+    -     #END 태그 줄 내어쓰지 않기
     ''')
 #indent-on
 
@@ -107,7 +114,7 @@ def check_if_auto_words(st): # [s]tripped [t]ext
     return False
 #end def
 
-def check_if_two_level_word_beginning(st): # [s]tripped text
+def check_if_two_level_word_beginning(st): # [s]tripped [t]ext
     for x in ['match (', 'match(', 'match ']:
         if  st.startswith(x):
             return True
@@ -161,7 +168,7 @@ def handle_end():
             #end if for
             g_var.lev = max(0,g_var.lev)
     #end if if
-    print(g_config.indent*g_var.lev, g_var.text.strip(),file=g_var.sio,sep='')
+    print(g_config.indent*(g_var.lev+ 1*(g_config.dedent_end_tag!=True)), g_var.text.strip(),file=g_var.sio,sep='')
 #end def
 
 def handle_indent():
@@ -331,6 +338,22 @@ def indent_pycode(code):
             g_config.indent_comment=True
             print(g_var.text.rstrip(),file=g_var.sio,sep='')
         elif (
+            g_var.stripped.upper()=='#DEDENT-END-TAG ON'
+            or g_var.stripped.upper()=='# DEDENT-END-TAG-ON'
+            or g_var.stripped.upper()=='#DEDENT-END-TAG ON'
+            or g_var.stripped.upper()=='# DEDENT-END-TAG ON'
+            ):
+            g_config.dedent_end_tag=True
+            print(g_var.text.rstrip(),file=g_var.sio,sep='')
+        elif (
+            g_var.stripped.upper()=='#DEDENT-END-TAG OFF'
+            or g_var.stripped.upper()=='# DEDENT-END-TAG-OFF'
+            or g_var.stripped.upper()=='#DEDENT-END-TAG OFF'
+            or g_var.stripped.upper()=='# DEDENT-END-TAG OFF'
+            ):
+            g_config.dedent_end_tag=False
+            print(g_var.text.rstrip(),file=g_var.sio,sep='')
+        elif (
             g_var.stripped.upper().startswith("#END")
             or g_var.stripped.upper().startswith("# END")
             ):
@@ -451,7 +474,7 @@ if __name__=="__main__":
             print('사용법:')
             print('------')
             print()
-            print('py -3 indent_py_ko.py [원본-파일 [출력-파일]] [-enc {cp949,utf8}]')
+            print('py -3 indent_py_ko.py [원본-파일 [출력-파일]] [-enc {cp949|utf8}]')
             print()
             print("설명:")
             print('------------')

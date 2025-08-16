@@ -42,6 +42,7 @@ class PydentConfig (object):
         self.indent = ' '* self.tabsize
         self.auto_unindent = True
         self.indent_comment = True
+        self.dedent_end_tag = True
     #end def
 #end class
 
@@ -90,6 +91,12 @@ g_description = textwrap.dedent('''
     - #INDENT-COMMENT ON
     - #INDENT-COMMENT-ON
     -     indent comment lines (default)
+    - #DEDENT-END-TAG ON
+    - #DEDENT-END-TAG-ON
+    -     unindent #END tag lines (default)
+    - #DEDENT-END-TAG OFF
+    - #DEDENT-END-TAG-OFF
+    -     Don't unindent #END tag lines
     ''')
 #indent-on
 
@@ -278,7 +285,7 @@ def handle_end():
             #end if for
             g_var.lev = max(0,g_var.lev)
     #end if if
-    print(g_config.indent*g_var.lev, g_var.text.strip(),file=g_var.sio,sep='')
+    print(g_config.indent * (g_var.lev+ 1*(g_config.dedent_end_tag!=True)), g_var.text.strip(),file=g_var.sio,sep='')
 #end def
 
 def handle_indent():
@@ -440,6 +447,23 @@ def indent_pycode(code):
             ):
             g_config.indent_comment=True
             print(g_var.text.rstrip(),file=g_var.sio,sep='')
+        elif (
+            g_var.stripped.upper()=='#DEDENT-END-TAG ON'
+            or g_var.stripped.upper()=='# DEDENT-END-TAG-ON'
+            or g_var.stripped.upper()=='#DEDENT-END-TAG ON'
+            or g_var.stripped.upper()=='# DEDENT-END-TAG ON'
+            ):
+            g_config.dedent_end_tag=True
+            print(g_var.text.rstrip(),file=g_var.sio,sep='')
+        elif (
+            g_var.stripped.upper()=='#DEDENT-END-TAG OFF'
+            or g_var.stripped.upper()=='# DEDENT-END-TAG-OFF'
+            or g_var.stripped.upper()=='#DEDENT-END-TAG OFF'
+            or g_var.stripped.upper()=='# DEDENT-END-TAG OFF'
+            ):
+            g_config.dedent_end_tag=False
+            print(g_var.text.rstrip(),file=g_var.sio,sep='')
+        
         elif (
             g_var.stripped.upper().startswith("#END")
             or g_var.stripped.upper().startswith("# END")
