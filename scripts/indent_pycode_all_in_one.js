@@ -76,11 +76,11 @@ Please insert the following special comments in the code:
 #INDENT-COMMENT ON
 #INDENT-COMMENT-ON
     indent comment lines (default)
-- #DEDENT-END-TAG ON
-- #DEDENT-END-TAG-ON
+#DEDENT-END-TAG ON
+#DEDENT-END-TAG-ON
     unindent #END tag lines (default)
-- #DEDENT-END-TAG OFF
-- #DEDENT-END-TAG-OFF
+#DEDENT-END-TAG OFF
+#DEDENT-END-TAG-OFF
     Don't unindent #END tag lines\n`;
 
 g_description_ko = `파이썬 코드의 들여 쓰기를 고치는 프로그램.
@@ -472,4 +472,5 @@ function indent_pycode(code){
     } //end for // let i = 0
     return g_var.sio;
 }  //end
+
 
